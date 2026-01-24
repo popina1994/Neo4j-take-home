@@ -18,7 +18,7 @@ public class SkipListImpl implements SkipList {
     private int cntEntries;
     private Random randomGenerator;
 
-    public SkipListImpl(int maxLevel)
+    SkipListImpl(int maxLevel)
     {
         this.maxLevel = maxLevel;
         this.headNode = new Node(Long.MIN_VALUE, maxLevel);
