@@ -1,7 +1,16 @@
 package com.neo4j.index_team_hiring_exercise;
 import java.util.Random;
 
+/**
+ * A sequential implementation of the skip list with set-like characteristics
+ * for {@code long} values.
+ */
 public class SkipListImpl implements SkipList {
+    /**
+     * An implementation of a node in a skip list.
+     * It contains the value and the pointers
+     * to the next nodes in the corresponding lanes.
+     */
     private class Node
     {
         long value;
@@ -12,10 +21,25 @@ public class SkipListImpl implements SkipList {
             aNext = new Node[numLevels];
         }
     };
+    /**
+     * The pointer to the dummy head node in the skip list
+    */
     private Node headNode;
+    /**
+     * The pointer to the sentinel NILL node in the skip list.
+     */
     private Node nillNode;
+    /**
+     * The maximal number of lanes in the skip list.
+     */
     private int maxLevel;
+    /**
+     * The number of entries in the skip list.
+     */
     private int cntEntries;
+    /**
+     * The random generator used for fair coin tossing.
+     */
     private Random randomGenerator;
 
     SkipListImpl(int maxLevel)
@@ -31,11 +55,21 @@ public class SkipListImpl implements SkipList {
         this.randomGenerator = new Random();
     }
 
+    /**
+     * Flips a fair coin and checks if the head has fallen.
+     * @return {@code true} if the head has fallen, otherwise false.
+     */
     private boolean flipHead()
     {
         return randomGenerator.nextDouble() < 0.5;
     }
 
+    /**
+     * Returns 1 + the maximal number of heads in a row you get if you
+     * keep flipping the fair coin.
+     *
+     * @note We do not flip the coin more than the maximal level - 1 times.
+     */
     private int randomLevel()
     {
         int cnt;

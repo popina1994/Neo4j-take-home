@@ -1,5 +1,8 @@
 package com.neo4j.index_team_hiring_exercise;
 
+/**
+ * An implementation of the concurrent skip list with set-like characteristics for {@code long} values.
+ */
 public class SkipListConcurrentImpl extends SkipListImpl {
     SkipListConcurrentImpl(int maxLevel)
     {
